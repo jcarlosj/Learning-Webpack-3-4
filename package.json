@@ -1,0 +1,19 @@
+{
+  "name": "curso-webpack",
+  "version": "1.0.0",
+  "description": "Aprendiendo Webpack con Platzi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack index.js --output bundle.js --mode development"
+  },
+  "keywords": [
+    "webpack"
+  ],
+  "author": "Juan Carlos Jiménez Gutiérrez <jcjimenez29@misena.edu.co> (https://twitter.com/Jce_)",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.16.1",
+    "webpack-cli": "^3.1.0"
+  }
+}
