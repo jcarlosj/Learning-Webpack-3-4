@@ -24,7 +24,7 @@ module .exports = {
     plugins: [
         /* Array de los plugins que deseamos utilizar */
         new minCssExtractPlugin({                       /* Crea una instancia de nuestro plugin */
-            filename: 'css/style.css'                   /* Nombre del archivo de generado */
+            filename: 'css/[name].css'                  /* Nombre del archivo de generado será el mismo del archivo de entrada */
         })
     ]
 }
