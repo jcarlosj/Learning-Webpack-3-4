@@ -1,5 +1,4 @@
-// importa el Módulo de Node 'path'
-const path = require( 'path' );
+const path = require( 'path' );                         /* Importa el Módulo de Node 'path' */
 
 // Crea tarea:
 module .exports = {
