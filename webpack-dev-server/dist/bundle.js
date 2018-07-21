@@ -81,19 +81,42 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./webpack-dev-server/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./external-css/index.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/css-loader/index.js!./webpack-dev-server/master.css":
-/*!*****************************************************************!*\
-  !*** ./node_modules/css-loader!./webpack-dev-server/master.css ***!
-  \*****************************************************************/
+/***/ "./external-css/index.js":
+/*!*******************************!*\
+  !*** ./external-css/index.js ***!
+  \*******************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _master_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./master.css */ \"./external-css/master.css\");\n/* harmony import */ var _master_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_master_css__WEBPACK_IMPORTED_MODULE_0__);\n/* Entry Point */\n\nconst message = 'Hola mundo desde Webpack usando \"webpack.config.js\"';\n\ndocument .write( message );\nconsole .log( message );\n\n\n//# sourceURL=webpack:///./external-css/index.js?");
+
+/***/ }),
+
+/***/ "./external-css/master.css":
+/*!*********************************!*\
+  !*** ./external-css/master.css ***!
+  \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/lib/css-base.js */ \"./node_modules/css-loader/lib/css-base.js\")(false);\n// imports\n\n\n// module\nexports.push([module.i, \"body {\\n    align-items      : center;\\n    background-color : peru;\\n    display          : flex;\\n    font-size        : 40px;\\n    justify-content  : center;\\n    margin           : 0;\\n    min-height       : 100vh;\\n}\\n\", \"\"]);\n\n// exports\n\n\n//# sourceURL=webpack:///./webpack-dev-server/master.css?./node_modules/css-loader");
+eval("\nvar content = __webpack_require__(/*! !../node_modules/css-loader!./master.css */ \"./node_modules/css-loader/index.js!./external-css/master.css\");\n\nif(typeof content === 'string') content = [[module.i, content, '']];\n\nvar transform;\nvar insertInto;\n\n\n\nvar options = {\"hmr\":true}\n\noptions.transform = transform\noptions.insertInto = undefined;\n\nvar update = __webpack_require__(/*! ../node_modules/style-loader/lib/addStyles.js */ \"./node_modules/style-loader/lib/addStyles.js\")(content, options);\n\nif(content.locals) module.exports = content.locals;\n\nif(false) {}\n\n//# sourceURL=webpack:///./external-css/master.css?");
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./external-css/master.css":
+/*!***********************************************************!*\
+  !*** ./node_modules/css-loader!./external-css/master.css ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/lib/css-base.js */ \"./node_modules/css-loader/lib/css-base.js\")(false);\n// imports\n\n\n// module\nexports.push([module.i, \"body {\\n    align-items     : center;\\n    background-color: lightblue;\\n    display         : flex;\\n    font-size       : 40px;\\n    justify-content : center;\\n    margin          : 0;\\n    min-height      : 100vh;\\n}\\n\", \"\"]);\n\n// exports\n\n\n//# sourceURL=webpack:///./external-css/master.css?./node_modules/css-loader");
 
 /***/ }),
 
@@ -127,29 +150,6 @@ eval("/*\n\tMIT License http://www.opensource.org/licenses/mit-license.php\n\tAu
 /***/ (function(module, exports) {
 
 eval("\n/**\n * When source maps are enabled, `style-loader` uses a link element with a data-uri to\n * embed the css on the page. This breaks all relative urls because now they are relative to a\n * bundle instead of the current page.\n *\n * One solution is to only use full urls, but that may be impossible.\n *\n * Instead, this function \"fixes\" the relative urls to be absolute according to the current page location.\n *\n * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.\n *\n */\n\nmodule.exports = function (css) {\n  // get current location\n  var location = typeof window !== \"undefined\" && window.location;\n\n  if (!location) {\n    throw new Error(\"fixUrls requires window.location\");\n  }\n\n\t// blank or null?\n\tif (!css || typeof css !== \"string\") {\n\t  return css;\n  }\n\n  var baseUrl = location.protocol + \"//\" + location.host;\n  var currentDir = baseUrl + location.pathname.replace(/\\/[^\\/]*$/, \"/\");\n\n\t// convert each url(...)\n\t/*\n\tThis regular expression is just a way to recursively match brackets within\n\ta string.\n\n\t /url\\s*\\(  = Match on the word \"url\" with any whitespace after it and then a parens\n\t   (  = Start a capturing group\n\t     (?:  = Start a non-capturing group\n\t         [^)(]  = Match anything that isn't a parentheses\n\t         |  = OR\n\t         \\(  = Match a start parentheses\n\t             (?:  = Start another non-capturing groups\n\t                 [^)(]+  = Match anything that isn't a parentheses\n\t                 |  = OR\n\t                 \\(  = Match a start parentheses\n\t                     [^)(]*  = Match anything that isn't a parentheses\n\t                 \\)  = Match a end parentheses\n\t             )  = End Group\n              *\\) = Match anything and then a close parens\n          )  = Close non-capturing group\n          *  = Match anything\n       )  = Close capturing group\n\t \\)  = Match a close parens\n\n\t /gi  = Get all matches, not the first.  Be case insensitive.\n\t */\n\tvar fixedCss = css.replace(/url\\s*\\(((?:[^)(]|\\((?:[^)(]+|\\([^)(]*\\))*\\))*)\\)/gi, function(fullMatch, origUrl) {\n\t\t// strip quotes (if they exist)\n\t\tvar unquotedOrigUrl = origUrl\n\t\t\t.trim()\n\t\t\t.replace(/^\"(.*)\"$/, function(o, $1){ return $1; })\n\t\t\t.replace(/^'(.*)'$/, function(o, $1){ return $1; });\n\n\t\t// already a full url? no change\n\t\tif (/^(#|data:|http:\\/\\/|https:\\/\\/|file:\\/\\/\\/|\\s*$)/i.test(unquotedOrigUrl)) {\n\t\t  return fullMatch;\n\t\t}\n\n\t\t// convert the url to a full url\n\t\tvar newUrl;\n\n\t\tif (unquotedOrigUrl.indexOf(\"//\") === 0) {\n\t\t  \t//TODO: should we add protocol?\n\t\t\tnewUrl = unquotedOrigUrl;\n\t\t} else if (unquotedOrigUrl.indexOf(\"/\") === 0) {\n\t\t\t// path should be relative to the base url\n\t\t\tnewUrl = baseUrl + unquotedOrigUrl; // already starts with '/'\n\t\t} else {\n\t\t\t// path should be relative to current directory\n\t\t\tnewUrl = currentDir + unquotedOrigUrl.replace(/^\\.\\//, \"\"); // Strip leading './'\n\t\t}\n\n\t\t// send back the fixed url(...)\n\t\treturn \"url(\" + JSON.stringify(newUrl) + \")\";\n\t});\n\n\t// send back the fixed css\n\treturn fixedCss;\n};\n\n\n//# sourceURL=webpack:///./node_modules/style-loader/lib/urls.js?");
-
-/***/ }),
-
-/***/ "./webpack-dev-server/index.js":
-/*!*************************************!*\
-  !*** ./webpack-dev-server/index.js ***!
-  \*************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _master_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./master.css */ \"./webpack-dev-server/master.css\");\n/* harmony import */ var _master_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_master_css__WEBPACK_IMPORTED_MODULE_0__);\n/* Entry Point */\n\nconst message = 'Hola mundo desde Webpack usando \"webpack.config.js\"';\n\ndocument .write( message );\nconsole .log( message );\n\n\n//# sourceURL=webpack:///./webpack-dev-server/index.js?");
-
-/***/ }),
-
-/***/ "./webpack-dev-server/master.css":
-/*!***************************************!*\
-  !*** ./webpack-dev-server/master.css ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("\nvar content = __webpack_require__(/*! !../node_modules/css-loader!./master.css */ \"./node_modules/css-loader/index.js!./webpack-dev-server/master.css\");\n\nif(typeof content === 'string') content = [[module.i, content, '']];\n\nvar transform;\nvar insertInto;\n\n\n\nvar options = {\"hmr\":true}\n\noptions.transform = transform\noptions.insertInto = undefined;\n\nvar update = __webpack_require__(/*! ../node_modules/style-loader/lib/addStyles.js */ \"./node_modules/style-loader/lib/addStyles.js\")(content, options);\n\nif(content.locals) module.exports = content.locals;\n\nif(false) {}\n\n//# sourceURL=webpack:///./webpack-dev-server/master.css?");
 
 /***/ })
 

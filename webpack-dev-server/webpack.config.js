@@ -8,6 +8,14 @@ module .exports = {
         path: path .resolve( __dirname, 'dist' ),       /* Busca apartir del directorio actual el directorio 'dist' (destino) */
         filename: 'bundle.js'                           /* Nombre del archivo a generar */
     },
+    devServer: {
+        contentBase: './',          /* Ruta por defecto: dist podria ser tambien otra ruta asi: contentBase: path .join( __dirname, 'dist' )*/
+        open: true,                 /* Abre una pestaña en el navegador */
+        compress: true,             /* Comprime los archivos (gzip) */
+        publicPath: '/web/',        /* Los archivos estarán disponibles en esa ruta */
+        stats: 'errors-only',       /* Solo vamos a ver los mensajes que sean error.*/
+        port: 7000                  /* Puerto 7000 */
+    },
     module: {
         rules: [
             /* Array de los loaders que deseamos utilizar */
@@ -19,5 +27,6 @@ module .exports = {
                 ]
             }
         ]
-    }
+    },
+    watch: true
 }

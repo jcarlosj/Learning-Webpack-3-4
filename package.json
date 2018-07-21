@@ -11,7 +11,7 @@
     "build:css": "webpack --config ./external-css/webpack.config.js",
     "build:extract:css": "webpack --config ./plugin-mini-css-extract/webpack.config.js",
     "build:multiple:css": "webpack --config ./multiples-entry-points/webpack.config.js",
-    "build:dev:server": "webpack-dev-server --config ./webpack-dev-server/webpack.config.js --watch"
+    "build:dev:server": "webpack-dev-server --config ./webpack-dev-server/webpack.config.js"
   },
   "keywords": [
     "webpack"
