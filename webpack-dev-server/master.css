@@ -1,6 +1,7 @@
 body {
     align-items      : center;
     background-color : peru;
+    color            : white;
     display          : flex;
     font-size        : 40px;
     justify-content  : center;
