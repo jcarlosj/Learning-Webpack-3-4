@@ -1,6 +1,7 @@
 body {
     align-items      : center;
     background-color : darkgreen;
+    background-image : url( './platzi.png' ); 
     color            : white;
     display          : flex;
     font-size        : 40px;
