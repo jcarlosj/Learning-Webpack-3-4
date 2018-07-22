@@ -98,6 +98,18 @@ eval("\n\n__webpack_require__(/*! ./master.css */ \"./babel-loader/master.css\")
 
 /***/ }),
 
+/***/ "./babel-loader/make-message.js":
+/*!**************************************!*\
+  !*** ./babel-loader/make-message.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n    value: true\n});\n/* Crea una función que retorna un elemento 'p' con un texto dentro de el */\nfunction makeMessage(msg) {\n    var el = document.createElement('p');\n    el.textContent = msg;\n    return el;\n}\n\nexports.default = makeMessage; // Exporta por defecto este módulo\n\n//# sourceURL=webpack:///./babel-loader/make-message.js?");
+
+/***/ }),
+
 /***/ "./babel-loader/master.css":
 /*!*********************************!*\
   !*** ./babel-loader/master.css ***!
@@ -117,7 +129,7 @@ eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./babe
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _renderToDom = __webpack_require__(/*! ./render-to-dom.js */ \"./babel-loader/render-to-dom.js\");\n\nvar _renderToDom2 = _interopRequireDefault(_renderToDom);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n/* Importación de modulos de ES6 */\n\nvar waitTime = new Promise(function (bien, mal) {\n    /* Por Standar se usan ( response, reject ) como nombres de atributo */\n    setTimeout(function () {\n        bien('Han pasado 3 segundos');\n    }, 3000);\n});\n\nmodule.exports = {\n    firstMessage: 'Hola desde un módulo con Babel (ECMAScript2015)',\n    delayedMessage: async function delayedMessage() {\n        var message = await waitTime; // Espera una Promesa\n\n        console.log(message);\n\n        var el = document.createElement('p');\n        el.textContent = message;\n        (0, _renderToDom2.default)(el);\n    }\n};\n\n//# sourceURL=webpack:///./babel-loader/message.js?");
+eval("\n\nvar _renderToDom = __webpack_require__(/*! ./render-to-dom.js */ \"./babel-loader/render-to-dom.js\");\n\nvar _renderToDom2 = _interopRequireDefault(_renderToDom);\n\nvar _makeMessage = __webpack_require__(/*! ./make-message.js */ \"./babel-loader/make-message.js\");\n\nvar _makeMessage2 = _interopRequireDefault(_makeMessage);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar waitTime = new Promise(function (bien, mal) {\n    /* Por Standar se usan ( response, reject ) como nombres de atributo */\n    setTimeout(function () {\n        bien('Han pasado 3 segundos');\n    }, 3000);\n}); /* Importación de modulos de ES6 */\n\n\nmodule.exports = {\n    firstMessage: 'Hola desde un módulo con Babel (ECMAScript2015)',\n    delayedMessage: async function delayedMessage() {\n        var message = await waitTime; // Espera una Promesa\n\n        console.log(message);\n        (0, _renderToDom2.default)((0, _makeMessage2.default)(message));\n    }\n};\n\n//# sourceURL=webpack:///./babel-loader/message.js?");
 
 /***/ }),
 

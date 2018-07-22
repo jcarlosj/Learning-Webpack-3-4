@@ -1,4 +1,5 @@
 import renderToDOM from './render-to-dom.js';            /* Importación de modulos de ES6 */
+import makeMessage from './make-message.js';
 
 const waitTime = new Promise( ( bien, mal ) => {         /* Por Standar se usan ( response, reject ) como nombres de atributo */
     setTimeout( () => {
@@ -12,9 +13,6 @@ module .exports = {
         const message = await waitTime;     // Espera una Promesa
 
         console .log( message );
-
-        const el = document .createElement( 'p' );
-        el .textContent = message;
-        renderToDOM( el );
+        renderToDOM( makeMessage( message ) );
     }
 }
