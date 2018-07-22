@@ -94,7 +94,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\n__webpack_require__(/*! ./master.css */ \"./babel-loader/master.css\");\n\nvar _message = __webpack_require__(/*! ./message.js */ \"./babel-loader/message.js\");\n\nvar _message2 = _interopRequireDefault(_message);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n// Importación de archivos JS (Soporte al estándar ECMAScript2015)\n\n/* Entry Point */\nvar message = _message2.default.firstMessage;\n\ndocument.write(message);\nconsole.log(message);\n\n//# sourceURL=webpack:///./babel-loader/index.js?");
+eval("\n\n__webpack_require__(/*! ./master.css */ \"./babel-loader/master.css\");\n\nvar _message = __webpack_require__(/*! ./message.js */ \"./babel-loader/message.js\");\n\n// Importación de archivos JS (Soporte al estándar ECMAScript2015)\n\n/* Entry Point */\nvar message = _message.firstMessage;\n(0, _message.delayedMessage)();\n\ndocument.write(message);\nconsole.log(message);\n\n//# sourceURL=webpack:///./babel-loader/index.js?");
 
 /***/ }),
 
@@ -117,7 +117,7 @@ eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./babe
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar mensaje = {\n    firstMessage: 'Hola desde un módulo con Babel (ECMAScript2015)'\n};\n\nmodule.exports = mensaje;\n\n//# sourceURL=webpack:///./babel-loader/message.js?");
+eval("\n\nvar waitTime = new Promise(function (bien, mal) {\n    /* Por Standar se usan ( response, reject ) como nombres de atributo */\n    setTimeout(function () {\n        bien('Han pasado 3 segundos');\n    }, 3000);\n});\n\nmodule.exports = {\n    firstMessage: 'Hola desde un módulo con Babel (ECMAScript2015)',\n    delayedMessage: async function delayedMessage() {\n        var message = await waitTime; // Espera una Promesa\n\n        console.log(message);\n    }\n};\n\n//# sourceURL=webpack:///./babel-loader/message.js?");
 
 /***/ })
 
