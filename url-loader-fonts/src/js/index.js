@@ -1,7 +1,7 @@
 /* Entry Point */
-import './master.css';
+import '../css/master.css';
 import { firstMessage, delayedMessage } from './message.js';       // Importación de archivos JS (Soporte al estándar ECMAScript2015)
-import platziImg from './platzi.png';                              // Importa la imagen que está en el raíz del proyecto
+import platziImg from '../images/platzi.png';                              // Importa la imagen que está en el raíz del proyecto
 
 const message = firstMessage;
 delayedMessage();
