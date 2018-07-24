@@ -14,7 +14,8 @@
     "build:dev:server": "webpack-dev-server --config ./webpack-dev-server/webpack.config.js",
     "build:babel": "webpack --config ./babel-loader/webpack.config.js",
     "build:images": "webpack --config ./url-loader-image/webpack.config.js",
-    "build:fonts": "webpack --config ./url-loader-fonts/webpack.config.js"
+    "build:fonts": "webpack --config ./url-loader-fonts/webpack.config.js",
+    "build:videos": "webpack --config ./url-loader-videos/webpack.config.js"
   },
   "keywords": [
     "webpack"
