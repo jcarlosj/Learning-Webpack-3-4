@@ -19,7 +19,8 @@
     "build:json": "webpack --config ./json-loader/webpack.config.js",
     "build:react": "webpack --config ./react/webpack.config.js",
     "build:sass": "webpack --config ./sass-loader/webpack.config.js",
-    "build:stylus": "webpack --config ./stylus-loader/webpack.config.js"
+    "build:stylus": "webpack --config ./stylus-loader/webpack.config.js",
+    "build:less": "webpack --config ./less-loader/webpack.config.js"
   },
   "keywords": [
     "webpack"
@@ -35,6 +36,8 @@
     "css-loader": "^1.0.0",
     "file-loader": "^1.1.11",
     "json5-loader": "^1.0.1",
+    "less": "^3.8.0",
+    "less-loader": "^4.1.0",
     "mini-css-extract-plugin": "^0.4.1",
     "nib": "^1.1.2",
     "node-sass": "^4.9.2",
