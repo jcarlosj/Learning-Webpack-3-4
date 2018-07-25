@@ -4,14 +4,20 @@ $font-anchor = $font-anchor-size "Lucida Grande", Arial
 $font-padding-anchor = 10px
 $font-margin-anchor = $font-padding-anchor
 
-/* Estilos */
+/* Estilos
+   below es un MediaQuery que ya esta implementado por rupture */
 .Teacher
     border-bottom 2px solid orange
     padding 5px 0
+    +below( 768px )
+        background white
+        border-radius 5px;
+        margin 6px 0
+        padding 0 8px
 
 .Teacher
     > a
-        display block
+        display flex
         font $font-anchor, sans-serif
         font-style italic
         margin-left $font-margin-anchor

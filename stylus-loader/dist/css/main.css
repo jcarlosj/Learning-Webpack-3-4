@@ -24,13 +24,27 @@ body {
 }
 
 /* Variables */
-/* Estilos */
+/* Estilos
+   below es un MediaQuery que ya esta implementado por rupture */
 .Teacher {
   border-bottom: 2px solid #ffa500;
   padding: 5px 0;
 }
+@media only screen and (max-width: 768px) {
+  .Teacher {
+    background: #fff;
+    border-radius: 5px;
+    margin: 6px 0;
+    padding: 0 8px;
+  }
+}
 .Teacher > a {
-  display: block;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
   font: 12px "Lucida Grande", Arial, sans-serif;
   font-style: italic;
   margin-left: 10px;

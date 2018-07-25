@@ -34,7 +34,21 @@ module .exports = {
                 use: [                                  /* Carga los loaders que se van a usar para reconocer los archivos que deseamos reconocer */
                     minCssExtractPlugin .loader,        /* Carga nuestro Plugin, para extraer los archivos CSS (Segundo ejecuta este) */
                     'css-loader',                       /* Carga el archivo CSS únicamente (Segundo se ejecuta este) */
-                    'stylus-loader'                     /* Carga el archivo Stylus únicamente (Primero ejecuta este) */
+                    {                                   /* Carga el archivo Stylus únicamente (Primero ejecuta este) */
+                        loader: 'stylus-loader',
+                        options: {
+                            /* Traeremos módulos externos (mixins) */
+                            use: [
+                                require( 'nib' ),       /* Conjunto de mixins que va a ayudar a que algunos prefijos de navegadores antiguos funcionen bien */
+                                require( 'rupture' )    /* Para dar soporte a MediaQueries con una sintaxis más sencilla */
+                            ],
+                            import: [
+                                /* Listado de rutas de archivos que deseo importar de forma automática */
+                                '~nib/lib/nib/index.styl',   /* ~ es un alias para entrar al directorio de node_modules*/
+                                '~rupture/rupture/index.styl'   /* ~ es un alias para entrar al directorio de node_modules*/
+                            ]
+                        }
+                    }
                 ]
             },
             /* Nuevo Loader para la configuración del soporte de ECMAScript */
