@@ -6,7 +6,7 @@ const webpack = require( 'webpack' );                                      /* Im
 module .exports = {
     mode: 'development',                                /* Asigna el modo de transpilación */
     entry: {                                            /* Asigna el 'entry point', apartir del directorio actual */
-        modules: [                                      /* Definición del Nombre de nuestro archivo final 'modules.js' */
+        modules: [                                      /* Definición del Nombre de nuestro archivo final 'modules.js' (También se usara como el nombre de la variable global si se configura en el 'output' ) */
             'react',
             'react-dom'
         ]
@@ -14,7 +14,7 @@ module .exports = {
     output: {                                           /* Asigna el 'output' */
         path: path .resolve( __dirname, 'dist' ),       /* Busca apartir del directorio actual el directorio 'dist' (destino) */
         filename: '[name].js',                          /* Nombre de los archivos a generar [name] alias para poner nombres dinámicos a los archivos de salida  */
-        library: '[name]'                               /* Nombre global de la librería 'modules' por que fue definido en el entry-point */
+        library: '[name]'                               /* Exporta variable global de la librería con el mismo nombre que fue definido en el entry-point 'modules' */
     },
     plugins: [
         /* 'DLL Plugin': Nos ayuda a generar nuestro bundle de dependencias o archivos comunes y darle cierta configuración que entenderá el paquete principal

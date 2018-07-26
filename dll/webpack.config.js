@@ -7,11 +7,6 @@ const webpack = require( 'webpack' );                                      /* Im
 module .exports = {
     mode: 'development',                                /* Asigna el modo de transpilación */
     entry: {                                            /* Asigna el 'entry point', apartir del directorio actual */
-        vendor: [
-            /* Array de librerías o frameworks que se quieren integrar como archivo común, especificamos en el entry las librerías que consideremos duplicadas */
-            'react',
-            'react-dom'
-        ],
         home: path .resolve( __dirname, 'src/js/index.js' ),
         contact: path .resolve( __dirname, 'src/js/contact.js' )
     },
@@ -128,18 +123,9 @@ module .exports = {
         /* Array de los plugins que deseamos utilizar */
         new minCssExtractPlugin({                       /* Crea una instancia de nuestro plugin */
             filename: 'css/[name].css'                  /* Nombre del archivo de generado será el mismo del archivo de entrada */
+        }),
+        new webpack .DllReferencePlugin({               /* DllReferencePlugin: hace referencia a un DLL */
+            manifest: require( './modules-manifest.json' ) /* Importa el archivo DLL */
         })
-        /* Así se agregaba el CommonChunkPlugin en la versión 3 de Webpack */
-        //, new webpack .optimize .CommonsChunkPlugin({
-        //    name: 'common'                                /* Nombre del archivo con las líneas comunes */
-        //})
-    ],
-    /* Ahora se optimiza la prevención de código duplicado de esta manera */
-    optimization: {
-        splitChunks: {
-            chunks: 'initial',
-            name: 'vendor',                 /* Nombre del archivo de salida para generar el archivo con código común */
-            minChunks: Infinity             /* Se crea un archivo con las dependencias en común, pero nada se guarda en el. Debemos especificar en el entry las librerías que consideremos duplicadas entre los distintos archivos entry. */
-        }
-    }
+    ]
 }
