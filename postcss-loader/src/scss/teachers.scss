@@ -1,0 +1,32 @@
+$teachers-border-size: 2px + 3px;
+$teachers-border-color: orange;
+$teachers-background: #F1F1F1;
+
+$teachers-name-color: gray;
+$teachers-twitter-color: #C1C1C1;
+
+$teachers-vertical-padding: $teachers-border-size * 2;
+$teachers-horizontal-padding: $teachers-border-size * 8;
+
+.Teachers {
+    background-color: $teachers-background;
+    border-top: $teachers-border-size solid $teachers-border-color;
+    border-bottom: $teachers-border-size solid $teachers-border-color;
+    border-radius: 5px;
+    padding: $teachers-vertical-padding $teachers-horizontal-padding;
+
+    li {
+        list-style: none;
+        text-transform: capitalize;
+        color: $teachers-name-color;
+
+        &.Teacher {
+            font-size: 0.6em;
+            a {
+                color: $teachers-twitter-color;
+                text-decoration: none;
+                font-size: 0.8em;
+            }
+        }
+    }
+}
