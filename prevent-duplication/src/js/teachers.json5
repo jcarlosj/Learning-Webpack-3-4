@@ -1,0 +1,24 @@
+{
+    "teachers": [
+        {
+            "name": "Freddy",
+            "twitter": "freddier"
+        },
+        {
+            "name": "Sasha Lifszyc",
+            "twitter": "slifszyc"
+        },
+        {
+            "name": "Julian Duque",
+            "twitter": "julian_duque"
+        },
+        {
+            "name": "Leonidas Esteban",
+            "twitter": "LeonidasEsteban"
+        },
+        {
+            "name": "Anahi Salgado",
+            "twitter": "anncode"
+        }
+    ]
+}
